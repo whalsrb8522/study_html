@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 연습문제</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            text-align: center;
+            width: 100%px;
+            height: 200px;
+            font-size: 50px;
+        }
+
+        a:visited {
+            color: white;
+        }
+
+        #naver {
+            background-color: bisque;
+        }
+
+        #naver>a:visited {
+            color: black;
+        }
+
+        #google {
+            background-color: antiquewhite;
+        }
+
+        #daum {
+            background-color: blanchedalmond;
+        }
+
+        ul {
+            font-size: 30px;
+        }
+
+        ul>li:nth-child(2n) {
+            color: red;
+        }
+
+        ul>li:nth-child(3n) {
+            color: green
+        }
+
+        ul>li:nth-child(1),
+        ul>li:nth-child(10) {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!--  
+        div 3개 만들어
+        naver google daum 사이트로 연결되게
+        naver는 초록
+        google
+    -->
+
+    <a href="https://naver.com">
+        <div id="naver">NAVER</div>
+    </a>
+
+    <a href="https://www.google.com">
+        <div id="google">GOOGLE</div>
+    </a>
+
+    <a href="https://www.daum.net">
+        <div id="daum">DAUM</div>
+    </a>
+
+    <!--  
+        전체 글자 크기, 굴기 크게
+        짝수 : 빨강
+        3, 6, 9 : 초록
+        1, 10 : 굵게
+    -->
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+</body>
+
+</html>
