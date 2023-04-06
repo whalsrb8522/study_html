@@ -20,16 +20,62 @@
         }
     -->
     <style>
+        .p_box {
+            background-color: yellow;
+        }
 
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            float: left;
+        }
+
+        .p_box::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .parent_box {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+
+        .parent_box::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .left_box {
+            width: 250px;
+            height: 500px;
+            float: left;
+            background-color: yellow;
+        }
+
+        .right_box {
+            width: 250px;
+            height: 500px;
+            float: right;
+            background-color: green;
+        }
     </style>
 </head>
 
 <body>
-    <div class="p-box">
-        <div class="box1">1</div>
-        <div class="box2">2</div>
-        <div class="box3">3</div>
-        <div class="box4">4</div>
+    <div class="p_box">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+
+    <div class="parent_box">
+        <div class="left_box"></div>
+        <div class="right_box"></div>
     </div>
 </body>
 
