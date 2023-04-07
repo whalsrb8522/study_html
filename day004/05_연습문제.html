@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 100%;
+        }
+
+        #container::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .sidebar {
+            float: left;
+            width: 200px;
+        }
+
+        .menu {
+            width: 100%;
+            height: 50px;
+            display: block;
+            text-align: center;
+            border: 1px solid black;
+            line-height: 3;
+            float: top;
+        }
+
+        .menu:hover {
+            background-color: beige;
+        }
+
+        .menu:not(:last-child) {
+            border-bottom: none;
+        }
+
+        .contents {
+            float: right;
+            width: calc(100% - 210px);
+            height: 500px;
+            border: 1px solid black;
+            background-image: url(/data/img/airplane01.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="sidebar">
+            <a href="#" class="menu">메뉴1</a>
+            <a href="#" class="menu">메뉴2</a>
+            <a href="#" class="menu">메뉴3</a>
+            <a href="#" class="menu">메뉴4</a>
+        </div>
+        <div class="contents"></div>
+    </div>
+</body>
+
+</html>
