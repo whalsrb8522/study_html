@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="/data/css/day006_02.css"> -->
     <style>
         * {
             box-sizing: border-box;
@@ -14,17 +13,20 @@
             padding: 0;
         }
 
-        .cover {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-
+        html,
         body {
+            height: 100%;
             background-image: url(/data/img/airplane02.jpg);
             background-size: cover;
             background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .cover {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
         }
 
         header {
