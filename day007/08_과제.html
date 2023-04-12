@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  
+        국어, 영어, 수학 성적을 받아
+        하단에 각각의 점수와, 평균/합계를 출력
+    -->
+    <form action="">
+        <fieldset>
+            <legend>성적 입력</legend>
+            국어: <input type="text" id="korean"><br>
+            영어: <input type="text" id="english"><br>
+            수학: <input type="text" id="math"><br>
+            <button type="button" onclick="calc()">계산</button>
+        </fieldset>
+    </form>
+
+    <ul id="list"></ul>
+
+    <script>
+        function calc() {
+            let korean = Number(document.getElementById('korean').value);
+            let english = Number(document.getElementById('english').value);
+            let math = Number(document.getElementById('math').value);
+
+            if (korean > 100 || english > 100 || math > 100) {
+                alert('점수는 100점을 넘길 수 없습니다.');
+                document.getElementById('korean').value = '';
+                document.getElementById('english').value = '';
+                document.getElementById('math').value = '';
+                return;
+            }
+
+            let sum = korean + english + math;
+            let avg = sum / 3;
+
+            let list = document.getElementById('list');
+            list.innerHTML = `
+                <li>국어: ${korean}</li>
+                <li>영어: ${english}</li>
+                <li>수학: ${math}</li>
+                <li>합계: ${sum}</li>
+                <li>평균: ${avg}</li>`;
+        }
+    </script>
+</body>
+
+</html>
