@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        form,
+        fieldset {
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,6 +22,7 @@
     <form action="">
         <fieldset>
             <legend>성적 입력</legend>
+            이름: <input type="text" id="name"><br>
             국어: <input type="text" id="korean"><br>
             영어: <input type="text" id="english"><br>
             수학: <input type="text" id="math"><br>
@@ -23,17 +30,20 @@
         </fieldset>
     </form>
 
+    <h3 id="title"></h3>
     <ul id="list"></ul>
+    <h3 id="check"></h3>
 
     <script>
         function calc() {
+            let name = document.getElementById('name').value;
             let korean = Number(document.getElementById('korean').value);
             let english = Number(document.getElementById('english').value);
             let math = Number(document.getElementById('math').value);
 
-            if (korean > 100 || english > 100 || math > 100) {
-                alert('점수는 100점을 넘길 수 없습니다.');
-                document.getElementById('korean').value = '';
+            if (korean < 0 || korean > 100 || english < 0 || english > 100 || math < 0 || math > 100) {
+                alert('0이상, 100이하의 점수를 입력해주세요');
+                document.getElementById('korean').value = '10';
                 document.getElementById('english').value = '';
                 document.getElementById('math').value = '';
                 return;
@@ -41,14 +51,18 @@
 
             let sum = korean + english + math;
             let avg = sum / 3;
+            let pf;
 
-            let list = document.getElementById('list');
-            list.innerHTML = `
+            avg >= 60 ? pf = 'PASS' : pf = 'FAIL';
+
+            document.getElementById('title').innerText = `${name}`
+            document.getElementById('list').innerHTML = `
                 <li>국어: ${korean}</li>
                 <li>영어: ${english}</li>
                 <li>수학: ${math}</li>
                 <li>합계: ${sum}</li>
-                <li>평균: ${avg}</li>`;
+                <li>평균: ${avg}</li>
+                <li>합격여부: ${pf}</li>`;
         }
     </script>
 </body>

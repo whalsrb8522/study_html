@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자색 바꾸기</title>
+    <style>
+        .java {
+            color: red;
+            font-size: 100px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="heading" class="java">javascript</h1>
+    <h3 id="main">위의 글자를 클릭해보세요</h3>
+    <h3 id="target">글자</h3>
+
+    <script>
+        let heading = document.getElementById('heading');
+        heading.onclick = function () {
+            // heading.style .color = 'red';
+            heading.classList.toggle('java')
+        }
+
+        // let main = document.getElementById('main');
+        let main = document.querySelector('#main');
+        main.onclick = function () {
+            main.style.setProperty('font-size', '30px');        // css 스타일
+        }
+
+        let target = document.querySelector('#target');
+        target.onclick = function () {
+            target.style.setProperty('background-color', 'aqua')
+        }
+    </script>
+</body>
+
+</html>
