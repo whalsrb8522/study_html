@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        while, do~while은 반복의 횟수를 예상하기 어려울 때 주로 사용
+    </h1>
+    <ul>
+        <li>
+            while(조건){실행문;} => 조건이 true일때 반복
+        </li>
+        <li>
+            do{실행문;} while(조건); => 실행문 우선 실행 후 조건 비교
+        </li>
+        <li>
+            조건이 계속 true라면 무한 루프에 걸릴 수 있음, 조건이 실행문 안에서 false로 바뀔 구문이 필요 (또는 break 사용)
+        </li>
+    </ul>
+
+    <script>
+        let count = 0;
+
+        while (count < 10) {
+            console.log(count);
+            count++;
+        }
+
+        console.log("-----구구단 (3단)-----");
+        let a = 3;
+        let b = 1;
+
+        // while (b <= 9) {
+        //     console.log(`${a} * ${b} = ${a * b}`);
+        //     b++;
+        // }
+
+        do {
+            console.log(`${a} * ${b} = ${a * b}`);
+            b++;
+        } while (b <= 9);
+    </script>
+</body>
+
+</html>

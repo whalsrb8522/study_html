@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nested_while</title>
+</head>
+
+<body>
+    <h1>
+        이준 반복문: outer while -> 기준, inner while -> 계속 반복
+    </h1>
+    <ul>
+        <li>
+            outer while 1~3
+        </li>
+        <li>
+            inner while 1~5 반복
+        </li>
+        <li>
+            outer while: 1, inner while: 1~5 반복<br>
+            outer while: 2, inner while: 1~5 반복<br>
+            outer while: 3, inner while: 1~5 반복
+        </li>
+    </ul>
+    <h1>
+        (구구단) 2~9단까지 구구단 출력하기
+    </h1>
+    <button type="button" onclick="gugudan()">구구단 출력</button>
+    <table id="gugu" border="1">
+        <!-- 2×1=2   3×1=3   ...   9×1=9 -->
+        <!-- 2×2=4   3×2=6   ...   9×2=18 -->
+        <!-- ... -->
+        <!-- 2×9=18   3×9=27   ...   9×9=81 -->
+    </table>
+
+    <script>
+        function gugudan() {
+            let gugu = document.getElementById("gugu");
+            let i = 2;
+            let j = 1;
+            let str = "";
+
+            while (j <= 9) {
+                str += `<tr>`;
+                while (i <= 9) {
+                    str += `<td>${i}x${j}=${i * j}</td> `
+                    i++;
+                }
+                str += `</tr>`;
+
+                i = 2;
+                j++;
+            }
+
+            gugu.innerHTML = str;
+        }
+    </script>
+</body>
+
+</html>
