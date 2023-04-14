@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이구하기</title>
+</head>
+
+<body>
+    이름: <input type="text" id="name"><br>
+    주민번호: <input type="text" id="rNum"><br>
+    <button type="button" onclick="calc()">확인</button>
+    <h3 id="result">
+        <!-- 이름, 생년월일, 성별, 나이 -->
+    </h3>
+
+    <script>
+        function calc() {
+            let name = document.getElementById('name').value;
+            let rNum = document.getElementById('rNum').value;
+
+            let bYear = rNum.slice(0, 2);
+            let bMonth = rNum.slice(2, 4);
+            let bDay = rNum.slice(4, 6);
+            let gCheck = rNum.charAt(rNum.indexOf("-") + 1);
+
+            let today = new Date();
+            let age;
+            let gender;
+
+            if (gCheck == 1 || gCheck == 2) {
+                bYear = "19" + bYear;
+            } else {
+                bYear = "20" + bYear;
+            }
+
+            if (gCheck == 1 || gCheck == 3) {
+                gender = "남자";
+            } else {
+                gender = "여자";
+            }
+            age = today.getFullYear() - bYear + 1;
+
+            document.getElementById('result').innerText = `
+                이름: ${name}\n                
+                생년월일: ${bYear}년 ${bMonth}월 ${bDay}일\n
+                성별: ${gender}\n
+                나이: ${age}`;
+        }
+    </script>
+</body>
+
+</html>

@@ -96,6 +96,17 @@
         // 000101 - 1234567 -> 000101 -> 1*****
         let num = "000101-1234567";
         console.log(num.substring(0, 8).padEnd(num.length, "*"));
+        num.charAt(7) == "1" ? console.log("남") : console.log("여");
+
+        console.log('----------------------------------------------');
+        let fullFileName = "20230413_javascript.string_method.html";
+        // let file = fullFileName.slice(fullFileName.indexOf(".") + 1, fullFileName.lastIndexOf("."));
+        let file = fullFileName.slice(fullFileName.indexOf(".") + 1, fullFileName.indexOf(".", fullFileName.indexOf(".") + 1));
+        console.log(file);
+        let date = fullFileName.slice(0, fullFileName.indexOf("_"));
+        console.log(date);
+        let extention = fullFileName.slice(fullFileName.lastIndexOf(".") + 1);
+        console.log(extention);
     </script>
 </body>
 
