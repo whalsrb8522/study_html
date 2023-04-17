@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  
+        input 파일에 파일명.확장자 입력하여 전송버튼을 누르면 이미지 파일인지 검사하여 
+        이미지파일이면 '정상파일입니다.'
+        이미지파일이 아니면 '이미지 파일만 가능합니다.' 라고 출력하기
+        - 이미지파일 : jpg, png, jpeg, gif
+        - 대소문자도 처리가 가능하게
+    -->
+    파일명: <input type="text" id="fileName">
+    <button type="button" id="subBtn">전송</button>
+    <h3 id="output"></h3>
+
+    <script>
+        // id가 subBtn인 버튼 클릭시 function 실행
+        document.getElementById("subBtn").addEventListener("click", function () {
+            // 변수 선언
+            let fileName = String(document.getElementById("fileName").value);   // id="fileName" input 박스의 값 가져오기
+            let fileExt = fileName.slice(fileName.lastIndexOf(".") + 1);        // 위에서 가져온 fileName 값의 확장자만 분리
+            let output = document.getElementById("output");     // id가 output인 html h3 태그를 변수로 지정
+            let imageExt = ["jpg", "png", "jpeg", "gif"];       // 이미지 파일의 확장자들을 배열로 지정
+
+            // fileExt 변수를 소문자로 변경(.toLowerCase()) 후 imageExt 배열의 값들 중에 존재하는지 확인
+            if (imageExt.includes(fileExt.toLowerCase())) {
+                output.innerText = "정상 파일입니다."
+            } else {
+                output.innerText = "이미지 파일만 가능합니다."
+            }
+        });
+    </script>
+</body>
+
+</html>
