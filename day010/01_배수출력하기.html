@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 배수 출력하기 -->
+    <h1>
+        배수 출력하기 (1~100까지 중 입력한 숫자의 배수)
+    </h1>
+
+    <input type="text" id="number">
+    <button type="button" id="btn">배수 출력</button>
+    <h3 id="result"></h3>
+
+    <script>
+        document.getElementById("btn").addEventListener("click", function () {
+            let number = parseInt(document.getElementById("number").value);
+            let result = document.getElementById("result");
+            let str = "";
+            let min = 1;
+            let max = 100;
+            let cnt = 0;
+
+            result.innerText = "";
+            if (number < min || number > max) {
+                alert("1~100 사이의 수를 입력해주세요.");
+                document.getElementById("number").value = "";
+                return;
+            }
+
+            // for (let i = 1; number * i <= 100; i++) {
+            //     str += `${number * i}\n`;
+            //     cnt++;
+            // }
+
+            for (let i = 1; i <= 100; i++) {
+                if (i % number == 0)
+                    str += `${i}\n`
+                cnt++;
+            }
+
+            result.innerText += `총 : ${cnt}개\n` + str;
+        });
+    </script>
+</body>
+
+</html>
