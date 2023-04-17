@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Up Down Game</h1>
+    <h1>
+        <button type="button" id="ran">랜덤 숫자 생성</button>
+    </h1>
+    <h3 id="printMsg"></h3>
+    <h1>
+        <input type="number" id="myNum" max="99" min="1">
+        <button type="button" id="chkBtn">확인</button>
+    </h1>
+    <h3 id="result"></h3>
+
+    <script>
+        let ranNum = 0;
+        let cnt = 1;
+
+        document.getElementById("ran").addEventListener("click", function () {
+            ranNum = Math.floor((Math.random() * 99) + 1);
+            console.log(ranNum);
+            document.getElementById("printMsg").innerText = "랜덤 숫자가 생성되었습니다."
+        });
+
+        document.getElementById("chkBtn").addEventListener("click", function () {
+            let myNum = document.getElementById("myNum").value;
+            let result = document.getElementById("result");
+
+            if (myNum < ranNum) {
+                result.innerText = "Down";
+            } else if (myNum > ranNum) {
+                result.innerText = "Up";
+            } else if (myNum == ranNum) {
+                result.innerText = `정답, 정답은 ${ranNum}입니다. ${cnt}번 만에 맞추셨습니다.`;
+            }
+            cnt++;
+        });
+    </script>
+</body>
+
+</html>
