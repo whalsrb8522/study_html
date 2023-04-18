@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+</head>
+
+<body>
+    <!--  
+        input:text 2개 생성, 과목 점수 입력
+        추가버튼 -> map에 추가
+        출력버튼 -> map을 출력
+        결과버튼 -> 합계, 평균, 합격 여부
+    -->
+
+    과목: <input type="text" name="" id="subject"><br>
+    점수: <input type="number" name="" id="score"><br>
+    <button id="subAdd">성적 추가</button>
+    <button id="subPrt">성적 출력</button>
+    <button id="subCalc">성적 계산</button>
+
+    <h3 id="process"></h3>
+
+    <ul id="result"></ul>
+
+    <script>
+        let subject = document.getElementById("subject");
+        let score = document.getElementById("score");
+        let process = document.getElementById("process");
+        let result = document.getElementById("result");
+
+        let subMap = new Map();
+
+        document.getElementById("subAdd").addEventListener("click", function () {
+            console.log(subject.value);
+            console.log(score.value);
+
+            if (subject.value == "") {
+                alert("과목명을 입력해주세요.")
+            } else if (score.value == "" || score.value < 0 || score.value > 100) {
+                alert("0~100 사이의 값을 입력해주세요.")
+            } else {
+                subMap.set(subject.value, score.value);
+                process.innerText = `"${subject.value}"이(가) 추가되었습니다.`;
+            }
+        });
+
+        function subPrt() {
+            let str = ""
+
+            subMap.forEach(function (v, k) {
+                str += `<li>${k} : ${v}</li>`;
+            });
+
+            result.innerHTML = str;
+            process.innerText = `출력하였습니다.`;
+        }
+        document.getElementById("subPrt").addEventListener("click", subPrt);
+
+        document.getElementById("subCalc").addEventListener("click", function () {
+            let sum = 0;
+            let avg = 0;
+            let str = "";
+
+            subMap.forEach(function (v) {
+                sum += parseInt(v);
+            });
+            avg = (sum / subMap.size).toFixed(2);
+
+            if (avg >= 60) {
+                str += `<li>합계 : ${sum}, 평균 : ${avg}, 합격여부 : 합격</li>`;
+            } else {
+                str += `<li>합계 : ${sum}, 평균 : ${avg}, 합격여부 : 불합격</li>`;
+            }
+
+            subPrt()
+            result.innerHTML += str;
+        });
+    </script>
+</body>
+
+</html>

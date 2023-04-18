@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classEx</title>
+</head>
+
+<body>
+    <script>
+        let myAccount = {
+            name: 'hong',
+            balance: 0,
+            // 입금
+            deposit: function (amount) {
+                this.balance += amount;
+            },
+            // 출금 
+            withdraw: function (amount) {
+                this.balance -= amount;
+            },
+            // 이체
+            transfer: function (amount, otherAccount) {
+                this.withdraw(amount);
+                otherAccount.deposit(amount);
+            }
+        };
+
+        let yourAccount = {
+            name: 'kim',
+            balance: 100,
+            // 입금
+            deposit: function (amount) {
+                this.balance += amount;
+            },
+            // 출금 
+            withdraw: function (amount) {
+                this.balance -= amount;
+            },
+            // 이체 
+            transfer: function (amount, otherAccount) {
+                this.withdraw(amount);
+                otherAccount.deposit(amount);
+            }
+        };
+
+        // 내 계좌에 입금하는 상황
+        console.log(`${myAccount.name} : ${myAccount.balance}`);
+        myAccount.deposit(500);
+        console.log(`${myAccount.name} : ${myAccount.balance}`);
+        myAccount.withdraw(100);
+        console.log(`${myAccount.name} : ${myAccount.balance}`);
+        myAccount.transfer(200, yourAccount);
+        console.log(`${myAccount.name} : ${myAccount.balance}`);
+        console.log(`${yourAccount.name} : ${yourAccount.balance}`);
+        console.log('----------');
+
+        class BankAccount {
+            constructor(name) {
+                this.name = name;
+                this.balance = 0;
+            }
+
+            deposit(amount) {
+                this.balance += amount;
+            }
+
+            withdraw(amount) {
+                this.balance -= amount;
+            }
+
+            transfer(amount, otherAccount) {
+                this.withdraw(amount);
+                otherAccount.deposit(amount);
+            }
+        }
+
+        const account1 = new BankAccount("Lee");
+        const account2 = new BankAccount("Hwang");
+        console.log(account1);
+        console.log(account2)
+        account1.deposit(1000);
+        console.log('after deposit', account1);
+        account1.withdraw(500);
+        console.log('after withdraw', account1);
+        account1.transfer(500, account2);
+        console.log('after transform', account1);
+        console.log('after transform', account2);
+    </script>
+</body>
+
+</html>

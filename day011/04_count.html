@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  
+        button 2개를 준비
+        +버튼 => 값이 1씩 증가
+        -버튼 => 값이 1씩 감소
+    -->
+    <button id="minus">-</button>
+    <input type="number" value="0" id="numberBox" disabled>
+    <button id="plus">+</button>
+
+    <script>
+        let minus = document.getElementById("minus");
+        let plus = document.getElementById("plus");
+        let numberBox = document.getElementById("numberBox");
+
+        plus.addEventListener("click", function () {
+            numberBox.value = parseInt(numberBox.value) + 1;
+        });
+
+        minus.addEventListener("click", function () {
+            if (numberBox.value > 0) {
+                numberBox.value = parseInt(numberBox.value) - 1;
+            }
+        });
+    </script>
+</body>
+
+</html>
