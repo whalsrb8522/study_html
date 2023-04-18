@@ -22,7 +22,7 @@
 
     <script>
         let ranNum = 0;
-        let cnt = 1;
+        let cnt = 0;
 
         document.getElementById("ran").addEventListener("click", function () {
             ranNum = Math.floor((Math.random() * 99) + 1);
@@ -34,6 +34,8 @@
             let myNum = document.getElementById("myNum").value;
             let result = document.getElementById("result");
 
+            cnt++;
+
             if (myNum < ranNum) {
                 result.innerText = "Down";
             } else if (myNum > ranNum) {
@@ -41,7 +43,6 @@
             } else if (myNum == ranNum) {
                 result.innerText = `정답, 정답은 ${ranNum}입니다. ${cnt}번 만에 맞추셨습니다.`;
             }
-            cnt++;
         });
     </script>
 </body>
