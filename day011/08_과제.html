@@ -27,36 +27,34 @@
     <h1 id="printResult"></h1>
 
     <script>
+        // html 태그 가져오기
         let printNum1 = document.getElementById("printNum1");
         let printNum2 = document.getElementById("printNum2");
         let printResult = document.getElementById("printResult");
 
-        let lottoNum = new Set();
-        let winNum = new Set();
-        let bonusNum = 0;
-        let lottoNum_arr = [];
-        let winNum_arr = [];
+        let lottoNum;   // 로또 번호
+        let winNum;     // 당첨 번호
+        let bonusNum = 0;           // 보너스 번호  
 
         // 내 로또번호 생성 6자리
         document.getElementById("genRanNum").addEventListener("click", function () {
             let str = "";   // 출력을 위한 변수
+
+            lottoNum = new Set();   // 로또 번호를 Set으로 선언
 
             // 랜덤 번호 6개 생성 후 lottoNum 변수에 저장
             for (let i = 0; lottoNum.size < 6; i++) {
                 lottoNum.add(Math.floor((Math.random() * 45) + 1));
             };
 
-            // lottoNum Set 변수를 lottoNum_arr 배열에 저장
-            lottoNum_arr = [];
-            lottoNum.forEach(function (v) {
-                lottoNum_arr.push(v);
-            });
+            // set을 array로
+            lottoNum = Array.from(lottoNum);
 
             // 배열 정렬
-            arraySort(lottoNum_arr);
+            arraySort(lottoNum);
 
             // 출력을 위해 lottoNum_arr 값들을 str변수에 대입
-            lottoNum_arr.forEach(function (v) {
+            lottoNum.forEach(function (v) {
                 str += `${v} `
             });
 
@@ -66,6 +64,8 @@
 
         document.getElementById("genWinNum").addEventListener("click", function () {
             let str = '';       // 출력을 위한 변수
+
+            winNum = new Set();     // 당첨 번호를 set으로
 
             // winNum set 변수에 랜덤값
             for (let i = 0; winNum.size < 7; i++) {
@@ -78,17 +78,14 @@
             });
             winNum.delete(bonusNum);
 
-            // winNum set 변수를 winNum_arr 배열로 저장
-            winNum_arr = [];
-            winNum.forEach(function (v) {
-                winNum_arr.push(v);
-            });
+            // set을 array로
+            winNum = Array.from(winNum);
 
             // winNum_arr 배열 정렬
-            arraySort(winNum_arr);
+            arraySort(winNum);
 
             // 출력을 위해 str 변수 winNum_arr 배열 값들 저장
-            winNum_arr.forEach(function (v) {
+            winNum.forEach(function (v) {
                 str += `${v} `
             });
 
@@ -106,13 +103,15 @@
 
             for (let i = 0; i < 6; i++) {
                 for (let j = 0; j < 6; j++) {
-                    if (lottoNum_arr[i] == winNum_arr[j])
+                    if (lottoNum[i] == winNum[j])
                         winCnt++;
                 }
 
-                if (lottoNum_arr[i] == bonusNum)
+                if (lottoNum[i] == bonusNum)
                     bonusCheck = true;
             }
+
+            console.log(winCnt);
 
             switch (winCnt) {
                 case 6:
