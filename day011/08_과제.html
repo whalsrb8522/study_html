@@ -38,61 +38,34 @@
 
         // 내 로또번호 생성 6자리
         document.getElementById("genRanNum").addEventListener("click", function () {
-            let str = "";   // 출력을 위한 변수
+            let str = "";
+            lottoNum = new Set();
 
-            lottoNum = new Set();   // 로또 번호를 Set으로 선언
-
-            // 랜덤 번호 6개 생성 후 lottoNum 변수에 저장
-            for (let i = 0; lottoNum.size < 6; i++) {
-                lottoNum.add(Math.floor((Math.random() * 45) + 1));
-            };
-
-            // set을 array로
+            makeRanSet(lottoNum, 6);
             lottoNum = Array.from(lottoNum);
-
-            // 배열 정렬
             arraySort(lottoNum);
 
-            // 출력을 위해 lottoNum_arr 값들을 str변수에 대입
-            lottoNum.forEach(function (v) {
-                str += `${v} `
-            });
+            for (const a of lottoNum) {
+                str += `${a} `
+            }
 
-            // 출력
             printNum1.innerHTML = str;
         });
 
         document.getElementById("genWinNum").addEventListener("click", function () {
-            let str = '';       // 출력을 위한 변수
+            let str = '';
+            winNum = new Set();
 
-            winNum = new Set();     // 당첨 번호를 set으로
-
-            // winNum set 변수에 랜덤값
-            for (let i = 0; winNum.size < 7; i++) {
-                winNum.add(Math.floor((Math.random() * 45) + 1));
-            };
-
-            // winNum set 변수의 마지막 값을 보너스 번호로 추출 후 해당 값 삭제
-            winNum.forEach(function (v) {
-                bonusNum = v;
-            });
-            winNum.delete(bonusNum);
-
-            // set을 array로
+            makeRanSet(winNum, 7);
             winNum = Array.from(winNum);
-
-            // winNum_arr 배열 정렬
+            bonusNum = winNum.pop();
             arraySort(winNum);
 
-            // 출력을 위해 str 변수 winNum_arr 배열 값들 저장
-            winNum.forEach(function (v) {
-                str += `${v} `
-            });
+            for (const a of winNum) {
+                str += `${a} `;
+            }
 
-            // 보너스번호 출력
             str += `(보너스번호: ${bonusNum})`;
-
-            // 출력
             printNum2.innerHTML = str;
         });
 
@@ -101,17 +74,16 @@
             let winCnt = 0;
             let str = '';
 
-            for (let i = 0; i < 6; i++) {
-                for (let j = 0; j < 6; j++) {
-                    if (lottoNum[i] == winNum[j])
+            // 등수 확인
+            for (const a of lottoNum) {
+                for (const b of winNum) {
+                    if (a == b)
                         winCnt++;
                 }
 
-                if (lottoNum[i] == bonusNum)
+                if (a == bonusNum)
                     bonusCheck = true;
             }
-
-            console.log(winCnt);
 
             switch (winCnt) {
                 case 6:
@@ -141,6 +113,12 @@
             arr.sort(function (a, b) {
                 return a - b;
             });
+        }
+
+        function makeRanSet(set, size) {
+            for (let i = 0; set.size < size; i++) {
+                set.add(Math.floor((Math.random() * 45) + 1));
+            };
         }
     </script>
 </body>

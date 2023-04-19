@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        클래스, 리터럴 객체, 생성자 함수를 통해 객체 생성
+    </h1>
+    <!--  
+        // 클래스 생성의 기본 문법
+        Class MyClass {
+            // 생성자
+            constructor() {
+                ...
+            }
+
+            // 메소드
+            method01() {...}
+            method02() {...}
+            method03() {...}
+
+            // getter/setter
+            get name() {
+                return this.name;
+            }
+            set name(value) {
+                this.name = value;
+            }
+        }
+
+        // 클래스 사용
+        let user = new MyClass(param)
+    -->
+
+    <!--  
+        생성자 함수는 클래스의 함수화
+        일반 함수와 생성자 함수는 기술적인 차이는 없음
+        1. 반드시 new를 통해 실행
+        2.함수 첫글자는 대문자로
+
+        function User(name) {
+            this.name = name;
+            this.age = 0;
+        }
+
+        let user = new User('영이');
+        console.log(user.name);
+        user.age = 20;
+        console.log(user.age);
+    -->
+
+    <script>
+        // 클래스, 객체, 생성자 함수
+        // 정의할 Property(멤버변수) : firstName, lastName, age, address
+        // 메서드 자바에서의 toString 같은 개념의 메서드 하나만 만들기
+
+        class Person {
+            constructor(firstName, lastName, age, address) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+                this.address = address;
+            }
+
+            get prtPerson() {
+                return `${this.lastName} ${this.firstName}, ${this.age}살, ${this.address} 거주`;
+            }
+        }
+
+        let me = new Person("Minkyu", "Cho", 30, "Incheon");
+        console.log(me.prtPerson);
+
+        function Person2(firstName, lastName, age, address) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.address = address;
+
+            this.prtPerson = function () {
+                return `${this.lastName} ${this.firstName}, ${this.age}살, ${this.address} 거주`;
+            }
+        }
+
+        let me2 = new Person2("Minkyu", "Cho", 30, "Incheon");
+        console.log(me2.prtPerson());
+
+        const person3 = {
+            firstName: "",
+            lastName: "",
+            age: "",
+            address: "",
+            setInfo: function (firstName, lastName, age, address) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+                this.address = address;
+            },
+            get prtPerson() {
+                return `${this.lastName} ${this.firstName}, ${this.age}살, ${this.address} 거주`;
+            },
+            set setFirstName(firstName) {
+                this.firstName = firstName;
+            }
+        }
+        let me3 = new person3.setInfo("Minkyu", "Cho", 30, "Incheon");
+        console.log(me3.prtPerson);
+    </script>
+</body>
+
+</html>

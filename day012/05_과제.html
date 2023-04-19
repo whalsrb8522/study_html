@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/data/css/day002_15.css">
+    <style>
+        li {
+            cursor: pointer;
+        }
+
+        li:hover {
+            text-shadow: 1px 1px 2px pink;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TRAVEL</h1>
+
+    <ul class="imgChange">
+        <li>HOME</li> |
+        <li>SEOUL</li> |
+        <li>TOKYO</li> |
+        <li>PARIS</li>
+    </ul>
+
+    <img id="imgTarget" src="/data/img/airplane01.jpg" alt="">
+
+    <script>
+        const imgChange = document.querySelector(".imgChange");
+        const imgTarget = document.getElementById("imgTarget");
+
+        imgChange.addEventListener("click", function (p) {
+            console.log(p);
+            switch (p.target.innerHTML) {
+                case "HOME":
+                    imgTarget.src = `/data/img/airplane01.jpg`;
+                    break;
+                case "SEOUL":
+                    imgTarget.src = `/data/img/airplane02.jpg`;
+                    break;
+                case "TOKYO":
+                    imgTarget.src = `/data/img/airplane03.jpg`;
+                    break;
+                case "PARIS":
+                    imgTarget.src = `/data/img/airplane04.jpg`;
+                    break;
+                default:
+                    break;
+            }
+        });
+    </script>
+</body>
+
+</html>
