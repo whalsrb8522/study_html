@@ -18,13 +18,14 @@
         }
 
         td {
-            width: 100px;
+            width: 90px;
             height: 70px;
         }
 
-        #calcInput1 {
+        #calcInput {
             width: 90%;
-            height: 40%;
+            /* height: 40%; */
+            height: 100%;
             font-size: 20px;
             margin: 0 5%;
             background: none;
@@ -60,8 +61,8 @@
     <table class="calculator" border="1">
         <tr>
             <td colspan="4">
-                <input id="calcInput1" type="text" disabled>
-                <input id="calcInput2" type="text" value="0" disabled>
+                <input id="calcInput" type="text" value="0" disabled>
+                <!-- <input id="calcInput2" type="text" value="0" disabled> -->
             </td>
         </tr>
         <tr>
@@ -96,25 +97,38 @@
     <script>
         // html
         let calculator = document.querySelector(".calculator");
-        let calcInput1 = document.getElementById('calcInput1');
-        let calcInput2 = document.getElementById('calcInput2');
+        let calcInput = document.getElementById('calcInput');
 
-        let calcList = '';
-        let result = '';
-        let lastInput = '';
+        let value = 0;
+        let mdnExprs = [];
 
         calculator.addEventListener("click", function (e) {
-            let button = e.target.value;
+            let button = e.target;
 
             if (e.target.type == "button") {
-                switch (button) {
-                    case "/":
-                        calcList = "";
-                        calcInput1.value = calcInput2.value + "÷";
+                switch (button.value) {
+                    case "/": case "*": case "+": case "-":
+                        mdnExprs.push(value);
+                        mdnExprs.push(button.value);
+                        value = 0;
+                        console.log(`mdnExprs = ${mdnExprs}`);
+                        calcInput.value += ` ${button.innerText} `;
+                        break;
+                    case "=":
+                        break;
+                    case "C":
+                        calcInput.value = "0";
+                        value = 0;
+                        mdnExprs = [];
+                        console.log(`value = ${value}`);
+                        console.log(`mdnExprs = ${mdnExprs}`);
                         break;
                     default:
-                        calcList += button;
-                        calcInput2.value = calcList;
+                        value = value * 10 + Number(button.value);
+                        console.log(`value = ${value}`);
+                        calcInput.value == 0 ?
+                            calcInput.value = button.value :
+                            calcInput.value += button.value;
                         break;
                 }
             }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        Window 메소드 종류
+    </h1>
+    <ul>
+        <li>
+            window.open('url','window name','option(size, scroll...)');
+        </li>
+        <li>
+            alert() : 경고창 띄움, prompt() : input 받을 수 있는 창, confirm(): 확인/취소 창
+        </li>
+        <li>
+            setInterval(function, millseconds);
+            일정 간격으로 지속적 시행문을 실행시킬 때 사용
+        </li>
+        <li>
+            setTimeout(function, millseconds);
+            일정시간동안 실행시킬때 사용
+        </li>
+    </ul>
+    <button onclick="openWindow()">열기</button>
+    <button onclick="closeWindow()">닫기</button>
+    <button onclick="openAlert()">alert</button>
+    <button onclick="openPrompt()">prompt</button>
+    <button onclick="openConfirm()">confirm</button>
+    <h3 id="msg"></h3>
+
+    <script>
+        let msg = document.getElementById('msg');
+
+        let myWindow;
+
+        function openWindow() {
+            myWindow = window.open('', 'myWindow', 'width = 400, height = 500');
+        }
+
+        function closeWindow() {
+            if (myWindow) {
+                myWindow.close();
+            }
+        }
+
+        function openAlert() {
+            alert('alert');
+        }
+
+        function openPrompt() {
+            let temp = prompt('prompt');
+            msg.innerText = `Prompt = ${temp}`;
+        }
+
+        function openConfirm() {
+            let temp = confirm('confirm');
+            msg.innerText = `confirm = ${temp}`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  
+        구구단 랜덤문데 10개 출제 후
+        정답을 맞춘다음 정담확인 누르면 색칠하여 정답여부 체크
+
+        정답은 input box에 입력
+    -->
+
+    <button id="startBtn">문제출제</button>
+
+    <ol id="q"></ol>
+
+    <button id="compareBtn">정답확인</button>
+
+    <h3 id="printRatio"></h3>
+
+    <script>
+        let q = document.getElementById('q');
+        let printRatio = document.getElementById('printRatio');
+        let qList = [];
+
+        document.getElementById('startBtn').addEventListener("click", () => {
+            for (let i = 0; i < 10; i++) {
+                let li = document.createElement(`li`);
+
+                let left = makeRandomDan();
+                let right = makeRandomIncre();
+
+                qList.push(left * right);
+                console.log(qList);
+
+                li.innerHTML = `${left} x ${right} = <input id="qInput${i}" type="text">`
+                q.appendChild(li);
+            }
+        });
+
+        document.getElementById('compareBtn').addEventListener("click", () => {
+            let win = 0;
+
+            for (let i = 0; i < 10; i++) {
+                let qInput = document.getElementById(`qInput${i}`);
+
+                if (qInput.value == qList[i]) {
+                    win++;
+                    qInput.style.backgroundColor = "green"
+                } else {
+                    qInput.style.backgroundColor = "red"
+                }
+            }
+
+            printRatio.innerText = `정답률 : ${win / 10 * 100}%`;
+        });
+
+        function makeRandomDan() {
+            return Math.floor((Math.random() * 8) + 2);
+        }
+
+        function makeRandomIncre() {
+            return Math.floor((Math.random() * 9) + 1);
+        }
+
+    </script>
+</body>
+
+</html>
