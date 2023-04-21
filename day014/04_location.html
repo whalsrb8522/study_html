@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        location 객체는 부라우저의 주소표시줄 입력에 관련된 객체
+    </h1>
+    <ul>
+        <li>
+            location.href = 'url'; : url로 이동
+        </li>
+        <li>
+            location.replace('url'); : url로 이동, history 객체에 저장하지 않음
+        </li>
+        <li>
+            location.assign('url') : url로 이동, history 객체에 저장
+        </li>
+        <li>
+            location.reload() : 현재 페이지 새로 고침
+        </li>
+    </ul>
+
+    <button id="lHref">href를 사용한 이동</button>
+    <button id="lReplace">replace를 사용한 이동</button>
+    <button id="lAssign">assign을 사용한 이동</button>
+    <button id="lReload">reload 페이지 새로고침</button>
+
+    <script>
+        let lHref = document.getElementById('lHref');
+        let lReplace = document.getElementById('lReplace');
+        let lAssign = document.getElementById('lAssign');
+        let lReload = document.getElementById('lReload');
+
+        lHref.addEventListener('click', () => {
+            location.href = 'https://www.naver.com/';
+        });
+
+        lReplace.addEventListener('click', () => {
+            location.replace('https://www.naver.com/');
+        });
+
+        lAssign.addEventListener('click', () => {
+            location.assign('https://www.naver.com/');
+        });
+
+        lReload.addEventListener('click', () => {
+            location.reload();
+        });
+    </script>
+</body>
+
+</html>

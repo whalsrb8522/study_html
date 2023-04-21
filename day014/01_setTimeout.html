@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        setTimeout(callback function, duration); <br>
+        duration 시간 후에 callback function 실행 <br>
+        setTimeout을 할당한 객체를 clearTImeout(할당한 객체)로 취소가 가능
+    </h1>
+
+    <button id="start">시작</button>
+    <button id="finish">끝</button> +
+    +
+
+    <h1 id="result"></h1>
+
+    <script>
+        let start = document.getElementById('start');
+        let finish = document.getElementById('finish');
+        let result = document.getElementById('result');
+
+        let timeObj;
+
+        start.addEventListener("click", () => {
+            timeObj = setTimeout(myFun, 3000)
+        });
+
+        finish.onclick = () => {
+            clearTimeout(timeObj);
+        }
+
+        function myFun() {
+            result.innerHTML = '짠!';
+        }
+    </script>
+</body>
+
+</html>

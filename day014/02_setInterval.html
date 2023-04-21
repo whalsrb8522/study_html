@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #h1 {
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="h1">
+        setInterval(callback function, interval duration) : <br>
+        duration(millsecond)을 주기로 지속적으로 callback function 호출 <br>
+        clearInterval(할당받은 객체)로 중지
+    </h1>
+
+    <button id="start">start</button>
+    <button id="finish">finish</button>
+
+    <script>
+        let start = document.getElementById('start');
+        let finish = document.getElementById('finish');
+
+        let intervalObj;
+
+        start.addEventListener('click', flashColor);
+        finish.addEventListener('click', stopColor);
+
+        function flashColor() {
+            intervalObj = setInterval(changeColor, 50);
+        }
+
+        function stopColor() {
+            clearInterval(intervalObj);
+        }
+
+        function changeColor() {
+            let h1 = document.getElementById('h1');
+            h1.style.color = (h1.style.color == 'white' ? 'black' : 'white');
+            h1.style.backgroundColor = (h1.style.backgroundColor == 'brown' ? 'yellow' : 'brown');
+        }
+    </script>
+</body>
+
+</html>
