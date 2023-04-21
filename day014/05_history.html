@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        브라우저가 저장하고 있는 방문페이지의 기록을 관리하는 객체
+    </h1>
+    <ul>
+        <li>
+            history.back() : 이전 방문 페이지로 이동
+        </li>
+        <li>
+            history.foward() : 다음 방문 페이지로 이동
+        </li>
+        <li>
+            history.go(n) : n번째 방문 페이지로 이동 (음수도 가능)
+        </li>
+        <li>
+            브라우저의 저장소를 기반으로 하기 때문에 작동이 안되는 브라우저가 있을 수 있음
+        </li>
+    </ul>
+
+    <!--  
+        a 태그를 이용하여 01~.html -> 02~.html -> 03~.html -> 04~.html -> 01~.html 페이지로 이동
+        -> 
+    -->
+    <br><a href="/day014/01_setTimeout.html">01 페이지로 이동</a>
+
+    <button id="back">back()</button>
+    <button id="foward">foward()</button>
+    <input type="text" id="n"><button id="go">go(n)</button>
+
+    <script>
+        document.getElementById('back').onclick = () => {
+            history.back();
+        }
+
+        document.getElementById('foward').onclick = () => {
+            history.forward();
+
+        }
+
+        document.getElementById('go').onclick = () => {
+            history.go(parseInt(document.getElementById('n').value));
+        }
+    </script>
+</body>
+
+</html>
