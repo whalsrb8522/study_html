@@ -22,23 +22,27 @@
         }
 
         #searchBox {
-            background-color: aquamarine;
+            background-color: bisque;
             height: 100px;
             padding: 25px
         }
 
-        #searchBox>input {
+        #needStuff {
             width: 800px;
             height: 50px;
             border: none;
         }
 
-        #searchBox>button {
+        #addBtn {
             border: none;
             width: 100px;
             height: 50px;
             margin-left: 10px;
             background-color: white;
+        }
+
+        #addBtn:hover {
+            background-color: rgb(210, 210, 210);
         }
 
         #itemList {
@@ -53,6 +57,26 @@
             line-height: 60px;
             text-align: left;
             padding-left: 60px;
+            /* border-bottom: 1px solid bisque; */
+        }
+
+        #itemList>li:nth-child(odd) {
+            background-color: rgb(255, 249, 242);
+        }
+
+        #itemList>li:nth-child(even) {
+            background-color: rgb(255, 241, 222);
+        }
+
+        #close {
+            width: 60px;
+            text-align: center;
+            float: right;
+            background-color: bisque;
+        }
+
+        #close:hover {
+            background-color: rgb(210, 210, 210);
         }
     </style>
 </head>
@@ -61,7 +85,7 @@
     <div id="container">
         <h1 id="title">여행 준비물 점검 목록</h1>
         <form id="searchBox">
-            <input id="needStuff" type="text" autofocus="true"><button type="button" id="addBtn">추가</button>
+            <input id="needStuff" type="text" autofocus="true" /><button type="button" id="addBtn">추가</button>
         </form>
         <div style="position: relative;">
             <ul id="itemList"></ul>
@@ -75,9 +99,13 @@
 
         addBtn.addEventListener('click', () => {
             let li = document.createElement('li');
-            li.innerText = needStuff.value;
+            li.innerHTML = `${needStuff.value}<div id="close" onClick="deleteList(this)">X</div>`;
             itemList.appendChild(li);
         });
+
+        function deleteList(p) {
+            p.parentElement.remove();
+        }
     </script>
 </body>
 
