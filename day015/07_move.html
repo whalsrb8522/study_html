@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body {
+            /* background-color: rgb(74, 194, 231); */
+            background-color: black;
+        }
+
+        div {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .people {
+            position: absolute;
+            top: 54%;
+            left: 45%;
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48;
+            font-size: 100px;
+            color: white;
+        }
+
+        .rainy {
+            position: absolute;
+            top: 10%;
+            left: 44%;
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48;
+            font-size: 100px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="moveIcon">
+        <span class="material-symbols-outlined people">
+            emoji_people
+        </span>
+        <span class="material-symbols-outlined rainy">
+            rainy
+        </span>
+    </div>
+
+    <script>
+        const moveIcon = document.getElementById('moveIcon');
+        moveIcon.addEventListener("mousemove", e => {
+            moveIcon.style.left = e.pageX + 'px';
+            moveIcon.style.top = e.pageY + 'px';
+        });
+    </script>
+</body>
+
+</html>

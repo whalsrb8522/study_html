@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM event</title>
+    <style>
+        img {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        document 영역에서 사용되는 이벤트를 정의
+    </h1>
+    <h3>
+        마우스, 키보드, 실행 등등 이벤트의 종류가 매우 많음
+    </h3>
+    <ul>
+        <li>
+            마우스 이벤트 : click(), focus(), blur(), input(), change(), mouseover(), mouseout(), select(), scroll(), load(),
+            drag() => drop()
+        </li>
+        <li>
+            키보드 이벤트 : event.key => keyDown(), keyPress(), keyUp()
+        </li>
+        <li>
+            기타 이벤트 관련 메소드 : preventDefault(), target, submit()
+        </li>
+        <li>
+            addEventListener('eventName', callback Function) 메소드를 사용하여 구현하는 것을 권장 <br>
+            메소드를 태그 속성이나 ,엘리먼트에 직접 부여하는 방식도 있음
+        </li>
+        <li>
+            addEventListener를 권장하는 이유는 같은 엘리먼트에 여러 이벤트를 중복 부여 할 수 있으며, <br>
+            적용된 이벤트를 선택적으로 제거 할 수 있기 때문
+        </li>
+    </ul>
+
+    <div id="container">
+        <img id="pic" src="/data/img/dog02.jpg" alt="">
+    </div>
+
+    <script>
+        // 고양이 이미지에 마우스를 올리면 다른 그림으로 변경
+        // 마우스가 영역을 벗어나면 기존 그림으로 다시 변경
+
+        let pic = document.getElementById('pic');
+        let a = 'dog';
+
+        pic.addEventListener("click", () => {
+            if (a == 'dog') {
+                a = 'cat';
+            } else {
+                a = 'dog';
+            }
+            pic.src = `/data/img/${a}01.jpg`;
+        });
+
+        pic.addEventListener("mouseover", () => {
+            pic.setAttribute('src', `/data/img/${a}01.jpg`);
+        });
+
+        pic.addEventListener("mouseout", () => {
+            pic.src = `/data/img/${a}02.jpg`;
+        });
+    </script>
+</body>
+
+</html>
