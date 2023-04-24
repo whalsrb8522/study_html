@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="innerOnce">li tag 한번에 추가</button>
+    <button id="innerSeq">li tag 순차적으로 추가</button>
+    <button id="appendOnce">li tag 한번에 추가</button>
+    <button id="appendSeq">li tag 순차적으로 추가</button>
+
+    <ul id="innerUl"></ul>
+    <hr>
+    <ol id="innerOl">
+    </ol>
+    <hr>
+    <ul id="appendUl"></ul>
+    <hr>
+    <ol id="appendOl"></ol>
+
+    <script>
+        const subjectArr = ['HTML', 'CSS', 'Javascript', 'SQL'];
+
+        // innerHTML
+        const innerOnce = document.getElementById('innerOnce');
+        const innerSeq = document.getElementById('innerSeq');
+        const innerUl = document.getElementById('innerUl');
+        const innerOl = document.getElementById('innerOl');
+
+        innerOnce.addEventListener("click", () => {
+            let str = "";
+
+            for (let subject of subjectArr) {
+                str += `<li>${subject}</li>`;
+            }
+
+            innerUl.innerHTML = str;
+        });
+
+        innerSeq.addEventListener("click", () => {
+            let i = innerOl.querySelectorAll('li').length;
+            if (i < subjectArr.length)
+                innerOl.innerHTML += `<li>${subjectArr[i]}</li>`
+        });
+
+        // appendChild
+        const appendOnce = document.getElementById('appendOnce');
+        const appendSeq = document.getElementById('appendSeq');
+        const appendUl = document.getElementById('appendUl');
+        const appendOl = document.getElementById('appendOl');
+
+        appendOnce.addEventListener("click", () => {
+            let i = appendUl.querySelectorAll('li').length;
+
+            if (i < subjectArr.length) {
+                for (let subject of subjectArr) {
+                    let li = document.createElement('li');
+                    li.innerHTML = subject;
+                    appendUl.appendChild(li);
+                }
+            }
+        });
+
+        appendSeq.addEventListener("click", () => {
+            let i = appendOl.querySelectorAll('li').length;
+
+            if (i < subjectArr.length) {
+                let li = document.createElement('li');
+                li.innerHTML = subjectArr[i];
+                appendOl.appendChild(li);
+            }
+        });
+    </script>
+</body>
+
+</html>

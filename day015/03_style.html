@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element의 CSS</title>
+</head>
+
+<body>
+    <h1>
+        CSS 적용은 element.style.property 형식으로 접근 및 변경이 가능
+    </h1>
+    <ul>
+        <li>
+            property는 자바스크립트의 코드 -(하이픈) 적용 안됨, 띄어쓰기 적용 안됨
+        </li>
+        <li>
+            CSS 속성의 -(하이픈)을 제거하고, 카멜표기법(뒤에오는 글자를 대문자로 변경)으로 변경
+        </li>
+        <li>
+            element.setAttribute(name, value) : element에 속성 부여, 이미 있는 속성이면 업데이트, 없는 속성이면 새 속성으로 추가
+        </li>
+        <li>
+            CSSStyleDeclaration.setProperty(propertyName, value) : CSS 스타일을 부여한 대상에게 CSS 프로퍼트를 부여 <br>
+            propertyName : CSS 속성 이름, value : 속성 값
+        </li>
+    </ul>
+    <h1 id="target">
+        색상명을 입력하고, 색상 변경이라는 버튼을 클릭하면 현재 h1 태그의 배경색이 입력한 색상으로 변경되도록
+    </h1>
+    <input type="text" id="textColor">
+    <button id="changeColor">색상 변경</button>
+    <hr>
+    <img src="/data/img/notebook01.jpg" alt="" id="img"> <br>
+    <input type="text" id="attrName">
+    <input type="text" id="attrValue">
+    <button id="btn">속성 변경</button>
+
+    <script>
+        let target = document.getElementById('target');
+        let textColor = document.getElementById('textColor');
+        let changeColor = document.getElementById('changeColor');
+
+        changeColor.addEventListener('click', () => {
+            // CSS의 변경 대상과 분량이 많을 경우
+            target.className = textColor.value;
+
+            // CSS의 변경 대상과 분량이 적을 경우
+            // 대상과 style 내용을 직접 지정
+            // h1.style.backgroundColor = value;
+            target.setAttribute('style', `background-color: ${textColor.value}`);
+        });
+
+        let img = document.getElementById('img');
+        let attrName = document.getElementById('attrName');
+        let attrValue = document.getElementById('attrValue');
+        let btn = document.getElementById('btn');
+
+        btn.addEventListener("click", () => {
+            console.log(attrName.value);
+            console.log(attrValue.value);
+            img.setAttribute('style', `${attrName.value}: ${attrValue.value}`);
+            img.setAttribute(`${attrName.value}`, `${attrValue.value}`);
+        });
+    </script>
+</body>
+
+</html>
