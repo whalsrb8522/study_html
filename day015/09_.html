@@ -66,6 +66,10 @@
             color: gray;
             /* text-decoration-line:none ; */
         }
+
+        .btn-disabled {
+            background-color: gray;
+        }
     </style>
 </head>
 
@@ -73,16 +77,34 @@
     <div class="container">
         <form action="">
             <!-- input 들어오는 위치 -->
-            <input type="text" name="id" class="text-field" placeholder="아이디"><br>
-            <input type="password" name="pw" class="text-field" placeholder="비밀번호"><br>
-            <!-- <input type="submit" class="btn-input" value="로그인"> -->
-            <button type="submit" class="btn-input" disabled="false">로그인</button>
+            <input type="text" name="id" id="id" class="text-field" placeholder="아이디"><br>
+            <input type="password" name="pw" id="pw" class="text-field" placeholder="비밀번호"><br>
+            <input type="submit" id="btn" class="btn-input btn-disabled" value="로그인" disabled>
         </form>
         <div class="links">
             <!-- 하단링크 -->
             <a href="#">비밀번호를 잊어버리셨나요</a>
         </div>
     </div>
+
+    <script>
+        let id = document.getElementById('id');
+        let pw = document.getElementById('pw');
+        let btn = document.getElementById('btn');
+
+        id.focus();
+
+        id.addEventListener("keyup", check);
+        pw.addEventListener("keyup", check);
+
+        function check() {
+            console.log(id.value.length);
+            if (id.value.length >= 7 && pw.value.length >= 7) {
+                btn.classList.remove('btn-disabled');
+                btn.removeAttribute('disabled');
+            }
+        }
+    </script>
 </body>
 
 </html>
