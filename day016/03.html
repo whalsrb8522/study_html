@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 400px;
+            border-collapse: collapse;
+        }
+
+        #container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #printTarget {
+            height: 100px;
+            text-align: ;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        #answer {
+            border: none;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+        }
+
+        #check {
+            width: 100%;
+            background-color: beige;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <table border="1px solid black">
+            <!-- <tr>
+                <td id="q0"></td>
+                <td id="q1"></td>
+                <td id="q2"></td>
+            </tr> -->
+            <tr>
+                <td id="printTarget"></td>
+            </tr>
+            <tr>
+                <td><input id="answer" type="text" maxlength="3" placeholder="정답을 입력해주세요."></td>
+            </tr>
+            <tr>
+                <td><button id="check">정답확인</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let printTarget = document.getElementById('printTarget');
+        let answer = document.getElementById('answer');
+        let check = document.getElementById('check');
+
+        let qNumSet = new Set();
+        let qNumArr = [];
+        let aNumArr = [];
+
+        for (let i = 0; qNumSet.size < 3; i++) {
+            qNumSet.add((Math.floor(Math.random() * 9)) + 1);
+            qNumArr = Array.from(qNumSet);
+        }
+        console.log(qNumArr);
+
+        let cnt = 0;
+        check.addEventListener("click", () => {
+            aNumArr = String(answer.value).split('');
+            console.log(aNumArr);
+
+            for (const iter of aNumArr) {
+                printTarget.innerText += iter;
+            }
+        });
+    </script>
+</body>
+
+</html>
