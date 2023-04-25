@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #bg,
+        #cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        #cover {
+            opacity: 0;
+            background-color: white;
+            animation: white 3s;
+        }
+
+        @keyframes white {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg"><img src="/data/img/mario_background.png" alt=""></div>
+    <div id="cover"></div>
+</body>
+
+</html>

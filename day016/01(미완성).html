@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-collapse: collapse;
+        }
+
+        table td {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="gameBoard">
+    </table>
+
+    <script>
+        const gameBoard = document.getElementById('gameBoard');
+        const td = document.getElementsByTagName('td');
+
+        const model = [
+            '/data/img/kakao01.png', '/data/img/kakao01.png',
+            '/data/img/kakao02.png', '/data/img/kakao02.png',
+            '/data/img/kakao03.png', '/data/img/kakao03.png',
+            '/data/img/kakao04.png', '/data/img/kakao04.png',
+            '/data/img/kakao05.png', '/data/img/kakao05.png',
+            '/data/img/kakao06.png', '/data/img/kakao06.png'
+        ];
+
+        function shuffleArr(model) {
+            for (let i = 0; i < 100; i++) {
+                let ran = Math.floor(Math.random() * 12);
+                let temp = model[0];
+                model[0] = model[ran];
+                model[ran] = temp;
+            }
+        }
+
+        function generateGame() {
+            let imgCnt = 0;
+
+            shuffleArr(model);
+            for (let i = 0; i < 3; i++) {
+                let tr = document.createElement('tr');
+                for (let j = 0; j < 4; j++) {
+                    let td = document.createElement('td');
+                    let img = document.createElement('img');
+
+                    img.src = model[imgCnt];
+                    // img.classList.toggle('hidden');
+                    td.innerHTML = '';
+                    td.appendChild(img);
+
+                    tr.appendChild(td);
+                    imgCnt++;
+                }
+                gameBoard.appendChild(tr);
+            }
+        }
+        generateGame();
+
+        let onePick;
+        let twoPick;
+        let cnt = 0;
+        let success = 0;
+        for (let i = 0; i < td.length; i++) {
+            td[i].addEventListener("click", () => {
+                let img = td[i].getElementsByTagName('img')[0];
+                console.log(td[i])
+                console.log(img);
+                td[i].style = "opacity:1"
+                cnt++;
+
+                if (cnt == 1) {
+                    onePick = img;
+                } else if (cnt == 2) {
+                    twoPick = img;
+
+                    if (onePick == twoPick) {
+                        success++;
+                    } else {
+                        setTimeout(() => {
+                            td[i].style = "opacity:0.3";
+                        }, 500);
+                    }
+                }
+            });
+        }
+
+        setTimeout(() => {
+            for (let i = 0; i < td.length; i++) {
+                td[i].style = "opacity:0.3";
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
