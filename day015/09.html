@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Cute Font', cursive;
+        }
+
+        input {
+            padding: 10px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(27, 188, 155);
+        }
+
+        .container {
+            width: 500px;
+            position: absolute;
+            margin: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: aliceblue;
+            text-align: center;
+            padding: 30px;
+            border-radius: 5px;
+        }
+
+        .text-field {
+            font-size: 1.5em;
+            border: 0px;
+            width: 100%;
+            height: 60px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .btn-input {
+            font-size: 1.75em;
+            text-align: center;
+            border: 0px;
+            width: 100%;
+            height: 70px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            background-color: rgb(27, 188, 155);
+            color: white;
+        }
+
+        .btn-input:active {
+            outline: 1px solid black;
+        }
+
+        .btn-input:disabled {
+            background-color: gray;
+            opacity: 0.3;
+        }
+
+        .links {
+            text-align: center;
+            margin: 0px;
+        }
+
+        .links a {
+            font-size: 1em;
+            color: gray;
+            text-decoration-line: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <!-- input 들어오는 위치 -->
+            <input type="text" name="id" id="id" class="text-field" placeholder="아이디"><br>
+            <input type="password" name="pw" id="pw" class="text-field" placeholder="비밀번호"><br>
+            <input type="" id="btn" class="btn-input btn-disabled" value="로그인" disabled>
+        </form>
+        <div class="links">
+            <!-- 하단링크 -->
+            <a href="#">비밀번호를 잊어버리셨나요</a>
+        </div>
+    </div>
+
+    <script>
+        let id = document.getElementById('id');
+        let pw = document.getElementById('pw');
+        let btn = document.getElementById('btn');
+
+        id.focus();
+
+        id.addEventListener("input", check);
+        pw.addEventListener("input", check);
+
+        let reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+        function check() {
+            if (id.value.length >= 8 && pw.value.length >= 8) {
+                if (reg.test(pw.value)) {
+                    btn.disabled = false;
+                    btn.type = "submit";
+                }
+            } else {
+                btn.disabled = true;
+                btn.type = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
